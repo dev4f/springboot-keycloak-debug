@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+keycloak:
+  realm: master
+  auth-server-url: http://${KEYCLOAK_HOST:localhost}:${KEYCLOAK_PORT:8080}/
+  resource: spring-app
+  bearer-only: true
+  enable-basic-auth: true
+  credentials:
+    secret: dmVuJDRAGPWNGyxo0RTtfyo5nEHEJKcK
+  security-constraints:
+    - authRoles:
+        - "*"
+      securityCollections:
+        - name: all
+          patterns:
+            - /*
+  policy-enforcer-config:
+    http-method-as-scope: true
+logging:
+  level:
+    org.keycloak: DEBUG
