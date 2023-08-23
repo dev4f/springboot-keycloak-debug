@@ -1,6 +1,7 @@
 server:
   port: 9000
 
+
 keycloak:
   realm: master
   auth-server-url: http://${KEYCLOAK_HOST:localhost}:${KEYCLOAK_PORT:8080}/
@@ -21,3 +22,16 @@ keycloak:
 logging:
   level:
     org.keycloak: DEBUG
+
+spring:
+  autoconfigure:
+#    exclude: org.keycloak.adapters.springboot.KeycloakAutoConfiguration # exclude default Keycloak configuration to use custom configuration
+  datasource:
+    url: jdbc:mysql://localhost:3308/ss?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update

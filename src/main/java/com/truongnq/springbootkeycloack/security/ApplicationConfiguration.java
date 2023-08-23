@@ -1,4 +1,4 @@
-package com.truongnq.springbootkeycloack;
+package com.truongnq.springbootkeycloack.security;
 
 import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfiguration {
 
     @Bean
-    public KeycloakConfigResolver KeycloakConfigResolver() {
-        return new KeycloakSpringBootConfigResolver();
+    public KeycloakConfigResolver keycloakConfigResolver() {
+        return new CustomKeycloakSpringBootConfigResolver();
     }
 }
